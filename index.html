@@ -17,10 +17,14 @@
             <a-asset-item id="animated-asset" src="assets/asset.glb"></a-asset-item>
         </a-assets>
 
-        <a-entity look-at="[gps-camera]" animation-mixer="loop: repeat" gltf-model="#animated-asset" scale="1 1 1"
+        <!-- <a-entity look-at="[gps-camera]" animation-mixer="loop: repeat" gltf-model="#animated-asset" scale="1 1 1"
             gps-entity-place="latitude: 30.182822202081955; longitude: -239.84835454124453;"></a-entity>
 
-        <a-camera gps-camera rotation-reader></a-camera>
+        <a-camera gps-camera rotation-reader></a-camera> -->
+
+        <a-box color="yellow"
+            gps-projected-entity-place="latitude: 30.182822202081955; longitude: -239.84835454124453;" />
+        <a-camera gps-projected-camera rotation-reader></a-camera>
     </a-scene>
 </body>
 
