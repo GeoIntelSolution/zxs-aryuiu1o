@@ -19,7 +19,7 @@
         <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
         <a-entity look-at="[gps-camera]" animation-mixer="loop: repeat" gltf-model="#animated-asset" scale="1 1 1"
             light="type: ambient; color: #BBB" rotation="0 90 10" position="0 0 -20"
-            gps-entity-place="latitude: 30.182822202081955; longitude: -239.84835454124453;"></a-entity>
+            gps-entity-place="latitude: 30.08392; longitude: 120.18573"></a-entity>
 
 
 
@@ -28,23 +28,5 @@
         <a-camera gps-projected-camera rotation-reader></a-camera>
     </a-scene>
 </body>
-<script>
-    AFRAME.registerComponent('rotation-reader', {
-        /**
-         * We use IIFE (immediately-invoked function expression) to only allocate one
-         * vector or euler and not re-create on every tick to save memory.
-         */
-        tick: (function () {
-            var position = new THREE.Vector3();
-            var quaternion = new THREE.Quaternion();
-
-            return function () {
-                this.el.object3D.getWorldPosition(position);
-                this.el.object3D.getWorldQuaternion(quaternion);
-                // position and rotation now contain vector and quaternion in world space.
-            };
-        })()
-    });
-</script>
 
 </html>
