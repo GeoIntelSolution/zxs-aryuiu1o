@@ -4,46 +4,46 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="./static/aframe.min.js"></script>
+    <script src="./static/aframe-look-at-component.min.js"></script>
+    <script src="./static/aframe-ar-nft.js"></script>
+    <script src="./static/aframe-extras.loaders.min.js"></script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
     <a-scene renderer="logarithmicDepthBuffer: true;" embedded loading-screen="enabled: false;"
-        arjs="sourceType: webcam; debugUIEnabled: false;">
+        arjs="sourceType: webcam; debugUIEnabled: true;">
         <a-assets>
-            <a-asset-item id="animated-asset" src="assets/arrow.glb"></a-asset-item>
+            <a-asset-item id="animated-asset" src="assets/bee.glb"></a-asset-item>
         </a-assets>
         <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
-        <a-entity look-at="[gps-projected-camera]" animation-mixer="loop: repeat" gltf-model="#animated-asset"
-            scale="1 1 1" light="type: ambient; color: #BBB" rotation="0 0 10" position="0 0 -20"
+        <a-entity look-at="[gps-camera]" animation-mixer="loop: repeat" gltf-model="#animated-asset"
+            light="type: ambient; color: #BBB" rotation="0 180 0" position="0 0 -70"
             gps-entity-place="latitude: 30.08392; longitude: 120.18573"></a-entity>
 
-        <!-- <a-box color="yellow" gps-projected-entity-place="latitude: 30.5; longitude: -239.84835454124453;"
-            scale="1 1 1 " /> -->
-        <a-camera gps-projected-camera rotation-reader simulateLatitude="30.08392" simulateLongitude="120.18573">
+        <a-box color="yellow" gps-projected-entity-place="latitude: 30.5; longitude: -239.84835454124453;"
+            scale="1 1 1 " />
+        <a-camera gps-camera rotation-reader simulateLatitude="30.08390" simulateLongitude="120.1854">
         </a-camera>
     </a-scene>
 </body>
 <script>
-    AFRAME.registerComponent('rotation-reader', {
-        /**
-         * We use IIFE (immediately-invoked function expression) to only allocate one
-         * vector or euler and not re-create on every tick to save memory.
-         */
-        tick: (function () {
-            var position = new THREE.Vector3();
-            var quaternion = new THREE.Quaternion();
+    // AFRAME.registerComponent('rotation-reader', {
+    //     /**
+    //      * We use IIFE (immediately-invoked function expression) to only allocate one
+    //      * vector or euler and not re-create on every tick to save memory.
+    //      */
+    //     tick: (function () {
+    //         var position = new THREE.Vector3();
+    //         var quaternion = new THREE.Quaternion();
 
-            return function () {
-                this.el.object3D.getWorldPosition(position);
-                this.el.object3D.getWorldQuaternion(quaternion);
-                // position and rotation now contain vector and quaternion in world space.
-            };
-        })()
-    });
+    //         return function () {
+    //             this.el.object3D.getWorldPosition(position);
+    //             this.el.object3D.getWorldQuaternion(quaternion);
+    //             // position and rotation now contain vector and quaternion in world space.
+    //         };
+    //     })()
+    // });
 </script>
 
 </html>
