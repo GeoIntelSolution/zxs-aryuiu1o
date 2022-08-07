@@ -14,16 +14,17 @@
     <a-scene renderer="logarithmicDepthBuffer: true;" embedded loading-screen="enabled: false;"
         arjs="sourceType: webcam; debugUIEnabled: true;">
         <a-assets>
-            <a-asset-item id="animated-asset" src="assets/bee.glb"></a-asset-item>
+            <a-asset-item id="animated-asset" src="assets/arrow.glb"></a-asset-item>
         </a-assets>
         <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
         <a-entity look-at="[gps-camera]" animation-mixer="loop: repeat" gltf-model="#animated-asset"
             light="type: ambient; color: #BBB" rotation="0 180 0" position="0 0 -70"
             gps-entity-place="latitude: 30.08392; longitude: 120.18573"></a-entity>
 
-        <a-box color="yellow" gps-projected-entity-place="latitude: 30.5; longitude: -239.84835454124453;"
-            scale="1 1 1 " />
-        <a-camera gps-camera rotation-reader simulateLatitude="30.08390" simulateLongitude="120.1854">
+        <!-- <a-box color="yellow" gps-projected-entity-place="latitude: 30.5; longitude: -239.84835454124453;"
+            scale="1 1 1 " /> -->
+        <!-- <a-camera gps-camera rotation-reader simulateLatitude="30.08390" simulateLongitude="120.1854"> -->
+        <a-cursor></a-cursor>
         </a-camera>
     </a-scene>
 </body>

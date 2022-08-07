@@ -8,31 +8,6 @@
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-  <script>
-    let cc = AFRAME.registerComponent('rotation-reader', {
-      init: function () {
-        console.log('init')
-      },
-      update: function () {
-        console.log('update')
-      },
-      /**
-       * We use IIFE (immediately-invoked function expression) to only allocate one
-       * vector or euler and not re-create on every tick to save memory.
-       */
-      tick: (function () {
-        var position = new THREE.Vector3();
-        var quaternion = new THREE.Quaternion();
-
-        return function () {
-          this.el.object3D.getWorldPosition(position);
-          this.el.object3D.getWorldQuaternion(quaternion);
-          // position and rotation now contain vector and quaternion in world space.
-        };
-      })()
-    });
-    console.log(cc)
-  </script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">

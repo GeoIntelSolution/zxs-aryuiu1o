@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>360&deg; Image</title>
+  <meta name="description" content="360&deg; Image - A-Frame">
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+
+<body>
+  <button style="width: 100px;height: 60px; color: #FFF;z-index: 10000;;position:absolute;"
+    onclick="changeImg()">Next</button>
+  <button style="right:0px;width: 100px;height: 60px; color: #FFF;z-index: 10000;;position:absolute;"
+    onclick="changeImgBack()">Back</button>
+  <a-scene>
+    <a-sky src="./test0.jpg" rotation="0 -130 0"></a-sky>
+    <a-text font="kelsonsans" value="only label with typeface" width="6" position="-2.5 0.25 -1.5" rotation="0 15 0">
+    </a-text>
+  </a-scene>
+</body>
+<script>
+  var index = 0
+  function changeImg () {
+    console.log('change hello')
+    var sceneEl = document.querySelector('a-scene');
+    let sky = sceneEl.querySelectorAll('a-sky');
+    if (sky.length > 0) {
+      sky[0].setAttribute("src", "./test" + ++index + ".jpg");
+    }
+
+    if (index === 5) {
+      index = -1;
+    }
+  }
+
+  function changeImgBack () {
+    var sceneEl = document.querySelector('a-scene');
+    let sky = sceneEl.querySelectorAll('a-sky');
+    if (sky.length > 0) {
+      sky[0].setAttribute("src", "./test" + --index + ".jpg");
+    }
+
+    if (index === -1) {
+      index = 5;
+    }
+  }
+</script>
+
+</html>
